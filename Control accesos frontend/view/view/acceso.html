@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Accesos</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <style>
+        .btn-back {
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: #ff6b6b;
+        }
+
+        .back-container {
+            width: 95%;
+            display: flex;
+            justify-content: flex-end;
+            margin: 15px auto 10px auto;
+        }
+
+        .total-accesos {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #007bff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            display: inline-block;
+            width: fit-content;
+            max-width: 220px;
+            text-align: center;
+        }
+
+        main {
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-brand">CONTROL DE ACCESOS</div>
+    </nav>
+
+    <div class="back-container">
+        <button class="btn-back" onclick="location.href='index.html'">⮜ Regresar</button>
+    </div>
+    
+    <main>
+        <h1>Módulo: Accesos</h1>
+
+        <!-- 🔥 ESTE BOTÓN NO LO DEBE VER EL PROPIETARIO -->
+        <a href="registro-acceso.html">
+            <button class="btn btn-primary solo-no-propietario">➕ Registrar Nuevo Acceso</button>
+        </a>
+        
+        <br><br>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID Acceso</th>
+                    <th>ID Vigilante</th>
+                    <th>ID Personal</th>
+                    <th>Momento Ingreso</th>
+                    <th>Momento Salida</th>
+                    <th>Visitas (N°)</th>
+                    <th>Autorizado Por</th>
+                    <th>Placa Vehículo</th>
+
+                    <!-- 🔥 ESTAS COLUMNAS SE OCULTAN PARA EL PROPIETARIO -->
+                    <th class="solo-no-propietario">Editar</th>
+                    <th class="solo-no-propietario">Eliminar</th>
+                </tr>
+            </thead>
+
+            <tbody id="cuerpoTablaAcceso">
+                <!-- Se llena desde getAcceso.js -->
+            </tbody>
+        </table>
+
+        <div id="totalAccesos" class="total-accesos"></div>
+
+        <div id="paginacionAcceso" class="mt-3 text-center"></div>
+    </main>
+
+    <script src="/js/getAcceso.js"></script>
+
+    <script>
+        // Mostrar total desde getAcceso.js
+        function mostrarTotalAccesos(total) {
+            document.getElementById("totalAccesos").textContent = `Total de accesos: ${total}`;
+        }
+    </script>
+
+    <!-- 🔥 SCRIPT PARA OCULTAR BOTONES AL PROPIETARIO -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const rol = localStorage.getItem("rol");
+
+        if (rol === "propietario") {
+            document.querySelectorAll(".solo-no-propietario")
+            .forEach(el => el.style.display = "none");
+        }
+    });
+    </script>
+
+</body>
+</html>
+
+
+

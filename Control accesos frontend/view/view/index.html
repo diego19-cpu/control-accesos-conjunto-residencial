@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inicio - Control de Accesos - Conjunto Residencial Los Robles</title>
+
+<!-- ICONOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f7fa;
+        overflow-x: hidden;
+    }
+
+    /* --- ENCABEZADO --- */
+    .banner {
+        width: 100%;
+        background: #0066ff;
+        padding: 15px 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 4px solid #ff4d4d;
+        box-sizing: border-box;
+    }
+
+    .banner-left {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .logo-guard {
+        height: 100px;
+        width: 100px;
+        flex-shrink: 0;
+        object-fit: contain;
+    }
+
+    h1 {
+        font-size: clamp(22px, 3.2vw, 34px);
+        margin: 0;
+        font-weight: bold;
+        color: white;
+        white-space: nowrap;
+    }
+
+    /* --- BOTÓN CERRAR SESIÓN --- */
+    .btn-logout {
+        background: #ff4d4d;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
+        white-space: nowrap;
+    }
+
+    .btn-logout:hover {
+        background: #ff6b6b;
+    }
+
+    /* --- TÍTULO PRINCIPAL --- */
+    h2 {
+        font-size: 26px;
+        color: #0066ff;
+        margin-top: 20px;
+        margin-left: 5%;
+        font-weight: bold;
+        border-bottom: 3px solid #ff4d4d;
+        width: 90%;
+        padding-bottom: 5px;
+    }
+
+    /* ============================
+       ACORDEONES MÁS PEQUEÑOS
+       ============================ */
+    .accordion {
+        width: 90%;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .accordion-item {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+
+    .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #0066ff;
+        font-size: 13px;
+    }
+
+    .accordion-header span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .accordion-header i.chevron {
+        transition: transform 0.2s;
+        font-size: 12px;
+    }
+
+    .accordion-item.active .accordion-header i.chevron {
+        transform: rotate(90deg);
+    }
+
+    .accordion-content {
+        padding: 0 12px 8px;
+        display: none;
+        font-size: 12px;
+        color: #333;
+    }
+
+    .accordion-content ul,
+    .accordion-content p {
+        margin: 4px 0;
+    }
+
+    /* ============================
+       ACCESOS RÁPIDOS REDUCIDOS
+       ============================ */
+    .quick-section {
+        width: 90%;
+        margin: 10px auto;
+        background: white;
+        border-radius: 10px;
+        padding: 8px 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        font-size: 12px;
+    }
+
+    .quick-section h3 {
+        margin: 0 0 4px;
+        font-size: 14px;
+        color: #0066ff;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .quick-actions-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 4px;
+    }
+
+    .quick-btn {
+        border: 1px solid #0066ff;
+        background: #f3f7ff;
+        border-radius: 8px;
+        padding: 6px 8px;
+        font-size: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: 0.2s;
+    }
+
+    .quick-btn i {
+        font-size: 14px;
+        color: #0066ff;
+    }
+
+    .quick-btn:hover {
+        background: #dbe8ff;
+    }
+
+    /* ============================
+          MENÚ PRINCIPAL
+       ============================ */
+    .menu-main {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 15px 20px;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .card {
+        background: white;
+        padding: 18px;
+        min-width: 100px;
+        max-width: 140px;
+        flex: 1;
+        border-radius: 14px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s ease;
+        border-top: 6px solid #86c5ff;
+    }
+
+    .card:hover {
+        transform: translateY(-5px) scale(1.05);
+        border-top: 6px solid #ff4d4d;
+        color: #ff4d4d;
+    }
+
+    .card i {
+        font-size: 22px;
+        margin-bottom: 6px;
+        color: #0066ff;
+    }
+
+    /* ============================
+          IMÁGENES
+       ============================ */
+    .images-section {
+        width: 90%;
+        margin: 20px auto;
+        display: flex;
+        gap: 25px;
+    }
+
+    .images-section img {
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .img-residencial { flex: 2; height: 350px; }
+    .img-porteria { flex: 1; height: 350px; }
+
+    /* FOOTER */
+    .footer {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        color: #666;
+        padding: 10px 0 15px;
+    }
+
+    .footer span {
+        color: #0066ff;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- PROTECCIÓN BÁSICA: si no hay sesión, volver al login -->
+<script>
+(function () {
+    const usuario = localStorage.getItem("usuarioLogueado");
+    const rol     = localStorage.getItem("rol");
+
+    if (!usuario || !rol) {
+        window.location.href = "login.html";
+    }
+})();
+</script>
+
+<!-- ========== ENCABEZADO ========== -->
+<div class="banner">
+    <div class="banner-left">
+        <img src="/view/view/img/logo-seguridad-guardia.png" class="logo-guard">
+        <h1>CONJUNTO RESIDENCIAL LOS ROBLES</h1>
+    </div>
+    <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+</div>
+
+<h2>Control de Accesos</h2>
+
+<!-- ========== MENÚ PRINCIPAL ========== -->
+<div class="menu-main">
+
+    <div class="card" onclick="location.href='administrador.html'"><i class="fa-solid fa-user-tie"></i> Administradores</div>
+
+    <div class="card" onclick="location.href='vigilantes.html'"><i class="fa-solid fa-user-shield"></i> Vigilantes</div>
+
+    <div class="card" onclick="location.href='turnos.html'"><i class="fa-solid fa-calendar-days"></i> Turnos</div>
+
+    <div class="card" onclick="location.href='propietarios.html'"><i class="fa-solid fa-users"></i> Propietarios</div>
+
+    <div class="card" onclick="location.href='inmueble.html'"><i class="fa-solid fa-building"></i> Inmueble</div>
+
+    <div class="card" onclick="location.href='personal.html'"><i class="fa-solid fa-id-card"></i> Personal</div>
+
+    <div class="card" onclick="location.href='acceso.html'"><i class="fa-solid fa-door-open"></i> Acceso</div>
+
+    <div class="card" onclick="location.href='novedad.html'"><i class="fa-solid fa-file-circle-plus"></i> Novedades</div>
+
+</div>
+
+<!-- ========== ACORDEÓN: ¿QUÉ ES EL SISTEMA? ========== -->
+<div class="accordion">
+    <div class="accordion-item" id="acc-sistema">
+        <div class="accordion-header" onclick="toggleAccordion('acc-sistema')">
+            <span><i class="fa-solid fa-circle-info"></i> ¿Qué es el sistema de Control de Accesos?</span>
+            <i class="fa-solid fa-chevron-right chevron"></i>
+        </div>
+        <div class="accordion-content">
+            <p>
+                El sistema de Control de Accesos del <strong>Conjunto Residencial Los Robles</strong>
+                permite registrar, supervisar y administrar entradas y salidas
+                de residentes, visitantes, vehículos y personal autorizado.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== ACCESOS RÁPIDOS ========== -->
+<div class="quick-section">
+    <h3><i class="fa-solid fa-bolt"></i> Accesos rápidos</h3>
+    <p>Acciones frecuentes para uso del vigilante:</p>
+
+    <div class="quick-actions-buttons">
+        <button class="quick-btn" onclick="location.href='acceso.html'">
+            <i class="fa-solid fa-right-to-bracket"></i> Registrar ingreso de visitante
+        </button>
+
+        <button class="quick-btn" onclick="location.href='acceso.html'">
+            <i class="fa-solid fa-car"></i> Registrar ingreso de vehículo
+        </button>
+
+        <button class="quick-btn" onclick="location.href='novedad.html'">
+            <i class="fa-solid fa-file-pen"></i> Registrar novedad de turno
+        </button>
+    </div>
+</div>
+
+<!-- ========== IMÁGENES ========== -->
+<div class="images-section">
+    <img src="/view/view/img/conjunto-residencial.png" class="img-residencial">
+    <img src="/view/view/img/porteria.jpeg" class="img-porteria">
+</div>
+
+<!-- ========== ACORDEONES DE INFORMACIÓN ========== -->
+<div class="accordion">
+
+    <div class="accordion-item" id="acc-conjunto">
+        <div class="accordion-header" onclick="toggleAccordion('acc-conjunto')">
+            <span><i class="fa-solid fa-building-user"></i> Información del conjunto</span>
+            <i class="fa-solid fa-chevron-right chevron"></i>
+        </div>
+        <div class="accordion-content">
+            <ul>
+                <li>6 torres residenciales.</li>
+                <li>240 apartamentos.</li>
+                <li>Parqueaderos para residentes y visitantes.</li>
+                <li>Zonas comunes: salón social, gimnasio, piscina.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="accordion-item" id="acc-seguridad">
+        <div class="accordion-header" onclick="toggleAccordion('acc-seguridad')">
+            <span><i class="fa-solid fa-shield-halved"></i> Esquema de seguridad</span>
+            <i class="fa-solid fa-chevron-right chevron"></i>
+        </div>
+        <div class="accordion-content">
+            <ul>
+                <li>Vigilancia 24/7.</li>
+                <li>Cámaras de seguridad en accesos y áreas comunes.</li>
+                <li>Registro digital de ingresos y salidas.</li>
+                <li>Control de novedades por turno.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="accordion-item" id="acc-practicas">
+        <div class="accordion-header" onclick="toggleAccordion('acc-practicas')">
+            <span><i class="fa-solid fa-list-check"></i> Buenas prácticas</span>
+            <i class="fa-solid fa-chevron-right chevron"></i>
+        </div>
+        <div class="accordion-content">
+            <ul>
+                <li>Todo visitante debe ser autorizado por un residente.</li>
+                <li>Verificar documento y placa del vehículo.</li>
+                <li>Reportar cualquier novedad.</li>
+                <li>No compartir claves del sistema.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="accordion-item" id="acc-contacto">
+        <div class="accordion-header" onclick="toggleAccordion('acc-contacto')">
+            <span><i class="fa-solid fa-phone-volume"></i> Información de contacto</span>
+            <i class="fa-solid fa-chevron-right chevron"></i>
+        </div>
+        <div class="accordion-content">
+            <p><strong>Portería:</strong> +57 (601) 123 45 67</p>
+            <p><strong>Administración:</strong> admin@losrobles.com</p>
+            <p><strong>Horario:</strong> Lunes a viernes, 8:00 a 5:00 p.m.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2025 <span>Conjunto Residencial Los Robles</span> – Sistema de Control de Accesos.
+</div>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+function cerrarSesion() {
+    localStorage.removeItem("usuarioLogueado");
+    localStorage.removeItem("rol");
+    window.location.href = "login.html";
+}
+
+function toggleAccordion(id) {
+    const item = document.getElementById(id);
+    const content = item.querySelector(".accordion-content");
+
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        item.classList.remove("active");
+    } else {
+        content.style.display = "block";
+        item.classList.add("active");
+    }
+}
+
+// Ajustar visibilidad de módulos según el rol
+document.addEventListener("DOMContentLoaded", function () {
+    const rol = localStorage.getItem("rol");
+    if (!rol) return;
+
+    // ADMINISTRADOR: ve todo
+    if (rol === "administrador") return;
+
+    // VIGILANTE: todo menos Administradores
+    if (rol === "vigilante") {
+        const cardAdmin = document.querySelector(".card[onclick=\"location.href='administrador.html'\"]");
+        if (cardAdmin) cardAdmin.style.display = "none";
+        return;
+    }
+
+    // PROPIETARIO: solo módulo Acceso
+    if (rol === "propietario") {
+        const paginasBloqueadas = [
+            "administrador.html",
+            "vigilantes.html",
+            "turnos.html",
+            "propietarios.html",
+            "inmueble.html",
+            "personal.html",
+            "novedad.html"
+        ];
+
+        paginasBloqueadas.forEach(function (href) {
+            const card = document.querySelector(`.card[onclick="location.href='${href}'"]`);
+            if (card) card.style.display = "none";
+        });
+    }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

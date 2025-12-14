@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Turnos</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <style>
+        .btn-back {
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: #ff6b6b;
+        }
+        .back-container {
+            width: 95%;
+            display: flex;
+            justify-content: flex-end; /* DERECHA */
+            margin: 15px auto 5px auto;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-brand">CONTROL DE ACCESOS</div>
+    </nav>
+
+    <!-- BOTÓN REGRESAR ARRIBA A LA DERECHA -->
+    <div class="back-container">
+        <button class="btn-back" onclick="location.href='index.html'">⮜ Regresar</button>
+    </div>
+    
+    <main>
+        <h1>Módulo: Turnos</h1>
+
+        <a href="registro-turno.html">
+            <button class="btn btn-primary">➕ Registrar Nuevo Turno</button>
+        </a>
+        
+        <br><br>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID Turno</th>
+                    <th>Asignación</th>
+                    <th>Hora inicio</th>
+                    <th>Hora fin</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaTurnos">
+                <!-- aquí se llenan las filas desde getTurno.js -->
+            </tbody>
+        </table>
+
+        <div id="paginacionTurnos" class="mt-3 text-center"></div>
+    </main>
+
+    <script src="/js/getTurno.js"></script>
+
+</body>
+</html>

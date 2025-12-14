@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Novedad</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <style>
+        .btn-back {
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: #ff6b6b;
+        }
+
+        .back-container {
+            width: 95%;
+            display: flex;
+            justify-content: flex-end; 
+            margin: 15px auto 5px auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-brand">CONTROL DE ACCESOS</div>
+    </nav>
+
+    <!-- 🔙 BOTÓN REGRESAR -->
+    <div class="back-container">
+        <button class="btn-back" onclick="location.href='novedad.html'">⮜ Regresar</button>
+    </div>
+    
+    <main style="padding: 25px 30px;">
+
+        <h1 style="margin-bottom: 18px; color:#007bff; font-size: 28px;">
+            Registro de Nueva Novedad
+        </h1>
+
+        <div style="display: flex; justify-content: center;">
+
+            <div style="
+                background: white;
+                padding: 20px 24px;
+                max-width: 600px;
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+                box-sizing: border-box;
+            ">
+
+                <form id="formularioRegistroNovedad">
+
+                    <div style="margin-bottom: 18px;">
+                        <label for="idNovedad">ID Novedad:</label><br>
+                        <input 
+                            type="number" 
+                            id="idNovedad" 
+                            placeholder="Ingrese un ID único"
+                            required
+                            style="margin-top: 6px; width: 100%; height: 36px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 18px;">
+                        <label for="idVigilante">ID Vigilante:</label><br>
+                        <input 
+                            type="number" 
+                            id="idVigilante" 
+                            required
+                            placeholder="ID del vigilante"
+                            style="margin-top: 6px; width: 100%; height: 36px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 18px;">
+                        <label for="idAdministrador">ID Administrador (opcional):</label><br>
+                        <input 
+                            type="number" 
+                            id="idAdministrador" 
+                            placeholder="Si aplica"
+                            style="margin-top: 6px; width: 100%; height: 36px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 18px;">
+                        <label for="idPersonal">ID Personal (opcional):</label><br>
+                        <input 
+                            type="number" 
+                            id="idPersonal" 
+                            placeholder="Si aplica"
+                            style="margin-top: 6px; width: 100%; height: 36px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 18px;">
+                        <label for="descripcion">Descripción:</label><br>
+                        <textarea 
+                            id="descripcion"
+                            rows="4"
+                            required
+                            placeholder="Detalle de la novedad"
+                            style="margin-top: 6px; width: 100%; box-sizing: border-box; resize: vertical;"></textarea>
+                    </div>
+
+                    <div style="margin-bottom: 22px;">
+                        <label for="momentoNovedad">Momento de la Novedad:</label><br>
+                        <input 
+                            type="datetime-local" 
+                            id="momentoNovedad" 
+                            required
+                            style="margin-top: 6px; width: 100%; height: 36px; box-sizing: border-box;">
+                    </div>
+
+                    <button 
+                        type="button" 
+                        id="registrarNovedad" 
+                        class="btn btn-primary"
+                        style="margin-right: 12px;">
+                        Guardar Novedad
+                    </button>
+
+                    <a 
+                        href="novedad.html"
+                        class="btn"
+                        style="color: purple; font-weight: bold;">
+                        Cancelar
+                    </a>
+
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="/js/postNovedad.js"></script>
+
+</body>
+</html>
+

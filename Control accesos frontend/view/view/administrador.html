@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Administradores</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <style>
+        .btn-back {
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: #ff6b6b;
+        }
+
+        /* Contenedor para alinear a la derecha */
+        .back-container {
+            width: 95%;
+            display: flex;
+            justify-content: flex-end;
+            margin: 15px auto 10px auto;
+        }
+
+        main {
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-brand">CONTROL DE ACCESOS</div>
+    </nav>
+
+    <!-- BOTÓN REGRESAR ARRIBA A LA DERECHA -->
+    <div class="back-container">
+        <!-- 👇 RUTA CORRECTA DE TU PORTADA -->
+        <button class="btn-back" onclick="location.href='/view/view/index.html'">⮜ Regresar</button>
+    </div>
+    
+    <main>
+        <h1>Módulo: Administradores</h1>
+
+        <a href="registro-administrador.html">
+            <button class="btn btn-primary">➕ Registrar Nuevo Administrador</button>
+        </a>
+        
+        <br><br>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Cargo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaAdministradores">
+                <!-- aquí se llenan las filas desde getAdministrador.js -->
+            </tbody>
+        </table>
+
+        <div id="paginacionAdministradores" class="mt-3 text-center"></div>
+    </main>
+
+    <script src="/js/getAdministrador.js"></script>
+
+</body>
+</html>

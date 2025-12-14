@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Inmueble</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <style>
+        .btn-back {
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: #ff6b6b;
+        }
+
+        .back-container {
+            width: 95%;
+            display: flex;
+            justify-content: flex-end; 
+            margin: 15px auto 10px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-brand">CONTROL DE ACCESOS</div>
+    </nav>
+
+    <!-- 🔴 BOTÓN REGRESAR ARRIBA A LA DERECHA -->
+    <div class="back-container">
+        <button class="btn-back" onclick="location.href='/view/view/index.html'">⮜ Regresar</button>
+    </div>
+
+    <main style="padding: 16px;">
+
+        <h1 style="margin-bottom: 15px; color:#007bff; font-size: 26px;">
+            Editar Inmueble
+        </h1>
+
+        <div style="display: flex; justify-content: center;">
+
+            <div style="
+                background: white;
+                padding: 16px 20px;
+                max-width: 520px;
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+                box-sizing: border-box;
+            ">
+
+                <form id="formularioEdicionInmueble">
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="idInmueble">ID Inmueble:</label><br>
+                        <input 
+                            type="number" 
+                            id="idInmueble" 
+                            readonly
+                            style="margin-top: 4px; width: 100%; height: 34px;
+                                   box-sizing: border-box; background: #e9ecef;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="numeroTorre">Número de Torre:</label><br>
+                        <input 
+                            type="text" 
+                            id="numeroTorre" 
+                            required
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="piso">Piso:</label><br>
+                        <input 
+                            type="number" 
+                            id="piso" 
+                            required
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="apartamento">Apartamento:</label><br>
+                        <input 
+                            type="text" 
+                            id="apartamento" 
+                            required
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 18px;">
+                        <label for="idPropietario">ID Propietario:</label><br>
+                        <input 
+                            type="number" 
+                            id="idPropietario" 
+                            required
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <button 
+                        type="button" 
+                        id="btnEditarInmueble"
+                        class="btn btn-warning"
+                        style="margin-right: 10px;">
+                        Actualizar Inmueble
+                    </button>
+
+                    <a 
+                        href="listar-inmuebles.html"
+                        class="btn"
+                        style="color: purple; font-weight: bold;">
+                        Cancelar
+                    </a>
+
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="/js/putInmueble.js"></script>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        if (id) {
+            fetch(`https://localhost:44331/api/Inmueble/${id}`)
+                .then(res => res.json())
+                .then(inm => {
+                    document.getElementById("idInmueble").value   = inm.IdInmueble;
+                    document.getElementById("numeroTorre").value  = inm.NumeroTorre;
+                    document.getElementById("piso").value         = inm.Piso;
+                    document.getElementById("apartamento").value  = inm.Apartamento;
+                    document.getElementById("idPropietario").value= inm.IdPropietario;
+                })
+                .catch(err => console.error("Error cargando inmueble:", err));
+        }
+    </script>
+
+</body>
+</html>
+

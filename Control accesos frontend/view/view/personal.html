@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personal</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <style>
+        .btn-back {
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: #ff6b6b;
+        }
+
+        /* Contenedor para alinear a la derecha */
+        .back-container {
+            width: 95%;
+            display: flex;
+            justify-content: flex-end;
+            margin: 15px auto 10px auto;
+        }
+
+        main {
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-brand">CONTROL DE ACCESOS</div>
+    </nav>
+
+    <!-- 🔙 BOTÓN REGRESAR -->
+    <div class="back-container">
+        <button class="btn-back" onclick="location.href='index.html'">⮜ Regresar</button>
+    </div>
+    
+    <main>
+        <h1>Módulo: Personal</h1>
+
+        <a href="registro-personal.html">
+            <button class="btn btn-primary">➕ Registrar Nuevo Personal</button>
+        </a>
+        
+        <br><br>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID Personal</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Documento de Identidad</th>
+                    <th>Tipo de Persona</th>
+                    <th>ID Inmueble</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaPersonal">
+                <!-- aquí se llenan las filas desde getPersonal.js -->
+            </tbody>
+        </table>
+
+        <!-- Paginación -->
+        <div id="paginacionPersonal" class="mt-3 text-center"></div>
+    </main>
+
+    <!-- JS que llena la tabla y maneja editar / eliminar -->
+    <script src="/js/getPersonal.js"></script>
+
+</body>
+</html>
+

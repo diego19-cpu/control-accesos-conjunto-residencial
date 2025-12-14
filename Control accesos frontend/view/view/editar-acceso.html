@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Acceso</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <style>
+        .btn-back {
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: #ff6b6b;
+        }
+
+        .back-container {
+            width: 95%;
+            display: flex;
+            justify-content: flex-end;
+            margin: 15px auto 10px auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-brand">CONTROL DE ACCESOS</div>
+    </nav>
+
+    <!-- 🔙 BOTÓN REGRESAR ARRIBA A LA DERECHA -->
+    <div class="back-container">
+        <button class="btn-back" onclick="location.href='acceso.html'">⮜ Regresar</button>
+    </div>
+    
+    <main style="padding: 16px;">
+
+        <h1 style="margin-bottom: 15px; color:#007bff; font-size: 26px;">
+            Editar Acceso
+        </h1>
+
+        <div style="display: flex; justify-content: center;">
+
+            <div style="
+                background: white;
+                padding: 16px 20px;
+                max-width: 520px;
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+                box-sizing: border-box;
+            ">
+
+                <form id="formularioEdicionAcceso">
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="idAcceso">ID Acceso:</label><br>
+                        <input 
+                            type="number" 
+                            id="idAcceso" 
+                            readonly
+                            style="margin-top: 4px; width: 100%; height: 34px; 
+                                   background: #e9ecef; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="idVigilante">ID Vigilante:</label><br>
+                        <input 
+                            type="number" 
+                            id="idVigilante" 
+                            required
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="idPersonal">ID Personal:</label><br>
+                        <input 
+                            type="number" 
+                            id="idPersonal" 
+                            required
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="momentoIngreso">Momento de Ingreso:</label><br>
+                        <input 
+                            type="datetime-local" 
+                            id="momentoIngreso" 
+                            required
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="momentoSalida">Momento de Salida:</label><br>
+                        <input 
+                            type="datetime-local" 
+                            id="momentoSalida"
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="numeroVisitas">Número de Visitas:</label><br>
+                        <input 
+                            type="number" 
+                            id="numeroVisitas"
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 14px;">
+                        <label for="autorizadoPor">Autorizado Por:</label><br>
+                        <input 
+                            type="text" 
+                            id="autorizadoPor"
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <div style="margin-bottom: 18px;">
+                        <label for="numeroPlacaVehiculo">Número de Placa del Vehículo:</label><br>
+                        <input 
+                            type="text" 
+                            id="numeroPlacaVehiculo"
+                            style="margin-top: 4px; width: 100%; height: 34px; box-sizing: border-box;">
+                    </div>
+
+                    <button 
+                        type="button" 
+                        id="btnEditarAcceso" 
+                        class="btn btn-warning"
+                        style="margin-right: 10px;">
+                        Actualizar Acceso
+                    </button>
+
+                    <a 
+                        href="acceso.html"
+                        class="btn"
+                        style="color: purple; font-weight: bold;">
+                        Cancelar
+                    </a>
+
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="/js/getAccesoById.js"></script>
+    <script src="/js/putAcceso.js"></script>
+
+</body>
+</html>
