@@ -11,8 +11,8 @@ El proyecto **Control de Accesos del Conjunto Residencial Los Robles** surge com
 Antes de la implementación del sistema, los registros se realizaban de forma manual, lo que generaba errores frecuentes, pérdida de información y demoras en la gestión de accesos.
 
 
-Sistema web de control de accesos compuesto por módulos de administración, vigilancia, turnos, propietarios, inmuebles, personal externo, control de accesos y novedades.
-Permite la trazabilidad completa de ingresos y eventos, optimizando los procesos de seguridad del conjunto residencial
+Sistema web de control de accesos compuesto por módulos de administración, vigilancia, turnos, propietarios, inmuebles, personal externo, control de accesos y novedades. Permite la trazabilidad completa de ingresos y eventos, optimizando los procesos de seguridad del conjunto residencial.
+
 ---
 
 ## Aclaración importante
@@ -119,4 +119,5 @@ Este repositorio es **público únicamente para visualización**.
 
 ## Autor
 **Juan Diego Manrique Orozco**
+
 
