@@ -1,7 +1,7 @@
 # Control de Accesos – Access Control System  
 ## Conjunto Residencial Los Robles
 
-📌 **Idioma / Language**
+ **Idioma / Language**
 - 🇪🇸 Español
 - 🇺🇸 English
 
@@ -209,6 +209,7 @@ Use, modification, or distribution of this project is not permitted without the 
 
 ### Author
 **Juan Diego Manrique Orozco**
+
 
 
 
